@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.069 s <<< FAILURE! - in TestSuite
+loginTest(score.mobileAutomation.login.LoginTest)  Time elapsed: 0.791 s  <<< FAILURE!
+org.testng.TestNGException: 
+
+Method public void score.mobileAutomation.login.LoginTest.loginTest(java.lang.String,java.lang.String,java.lang.String) requires a @DataProvider named : BrowseDataProvider
+

@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression-Android" verbose="4" parallel="tests" thread-count="30">
+    <test name="Android" parallel="classes" thread-count="30">
+        <parameter name="platformName" value="Android"/>
+        <parameter name="automationName" value="UIAutomator2"/>
+        <parameter name="platformVersion" value="10.0"/>
+        <parameter name="app" value="apps/theScore_24.3.0_apkcombo.com.apk"/>
+        <parameter name="appiumHostIp" value="127.0.0.1"/>
+        <parameter name="testdata.path" value="src/test/resources/dataProvider/TestData.xlsx"></parameter>
+        <classes>
+            <class name="score.mobileAutomation.login.HomeTest"/>
+        </classes>
+    </test>
+</suite>

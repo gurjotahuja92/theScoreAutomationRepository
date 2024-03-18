@@ -22,7 +22,7 @@ This framework is a Mobile automation based Multi module project with Singleton 
 # Framework highlights - 
 1. Its a multi-module project that means - All our required tests are kept in Browse module and all shared utilities are kept in SharedUtil module. 
 2. Each module will have its own pom.xml and there will be one common pom.xml for the entire framework.
-3. Driver initialization is happening through Singleton pattern : Refer DriverFactory class to see the driver related code.   
+3. Driver initialization is happening through Singleton pattern that means single driver throughout the classes : Refer DriverFactory class to see the driver related code.   
 4. Appium server is getting started and ended programmatically, no manual intervention is required.
 5. Data driven approach is used to feed the data from Data provider-Excel sheets. This will help in executing multiple data sets with same function. 
 6. Most of the locators will have resource-ids as these are the best ones to use. However, some dynamic and static xpaths are also used in the page classes. 

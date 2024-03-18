@@ -5,20 +5,19 @@ This is a test automation framework designed as an automation testing assignment
 This framework is a Mobile automation based Multi module project with Singleton & POM based design patterns.
 
 # Software pre-requisites:
-Java - 11.0.4
-Node versions used : 20.11.1, NPM version: 10.2.4
-Appium version - 2.5.1 
-Android Studio - Iguana (Install OS 10.0 or 11.0 emulator for best performance).
-IntelliJ Community/Ultimate
+- Java - 11.0.4
+- Node versions used : 20.11.1, NPM version: 10.2.4
+- Appium version - 2.5.1 
+- Android Studio - Iguana (Install OS 10.0 or 11.0 emulator for best performance).
+- IntelliJ Community/Ultimate
 
 # Tech stack used (Candidate machine) -
-Project - Multi-module project (for scalability)
-Frameworks - Test Driven Framework (TestNG), Data driven
-Design patterns - Singleton & POM
-Test data management - Data driven with Excel sheet
-Build tool used - Maven
-Device support - Real device and Emulator both
-Logger used - Log4J
+- Project - Multi-module project (for scalability)
+- Frameworks - Test Driven Framework (TestNG), Data driven
+- Design patterns - Singleton & POM
+- Test data management - Data driven with Excel sheet
+- Build tool used - Maven
+- Device support - Real device and Emulator both
 
 # Framework highlights - 
 1. Its a multi-module project that means - All our required tests are kept in Browse module and all shared utilities are kept in SharedUtil module. 

@@ -44,9 +44,17 @@ So, you do not need to worry about that, it will pick it up automatically and in
 1. Go to Browse module -> testRunner -> Run qa_runner.xml file. See if appium server gets started first and then test cases. 
 
 # Test case flow - 
-1. Launch the app, select Team, League and go to homepage.
-2. Validate homepage displayed. 
-3. Go to team selected via team logo on the top. 
-4. Validate correct team displayed and other details. 
-5. Go to team stats tab and validate stats are displayed. 
-6. Run Step 1-5 with different data set using data provider.
+1. Launch the app, select Team, League (using data driven approach and with the help of data provider) and go to homepage.
+2. Validate homepage displayed. Validated the team logo items with initials displayed on home page along with other elements specific to home page. 
+3. Go to team selected via team logo on the top.
+4. Validate correct team displayed on this page and game matches includes the team name selected.  
+5. Go to team stats tab and validate stats like progress bar and category name are displayed. 
+6. Run Step 1-5 with different data set (i.e different team name) using data provider.
+
+# Test design approach - 
+While designing test cases, few things I kept in my mind : 
+1. No thread.sleeps as it reduces execution speed, instead used explicit wait. This improves performance.
+2. Always verify the page displayed after some action. Keep the validations less static.
+3. Always use dynamic test data and no use of hard coded data as it can make test cases flaky.
+4. Sufficient test coverage.
+5. Exception handling - Exception handling is done to make sure we are handling the unknown exceptions gracefully and logging the reasons of failures. 

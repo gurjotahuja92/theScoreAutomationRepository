@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import score.mobileAutomation.basePage.BaseAppPage;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,27 +22,27 @@ public class HomePage extends BaseAppPage {
     @FindAll({
             @FindBy(id = "com.fivemobile.thescore:id/btn_primary")
     })
-    public WebElement getStartedBtn;
+    private WebElement getStartedBtn;
 
     @FindAll({
             @FindBy(id = "com.fivemobile.thescore:id/txt_sign_in")
     })
-    public WebElement signInBtn;
+    private WebElement signInBtn;
 
     @FindAll({
             @FindBy(id = "com.fivemobile.thescore:id/btn_primary")
     })
-    public WebElement continueBtn;
+    private WebElement continueBtn;
 
     @FindAll({
             @FindBy(id = "com.fivemobile.thescore:id/action_button_text")
     })
-    public WebElement doneBtn;
+    private WebElement doneBtn;
 
     @FindAll({
             @FindBy(id = "com.fivemobile.thescore:id/dismiss_modal")
     })
-    public WebElement dismissBtn;
+    private WebElement dismissBtn;
 
     @FindAll({
             @FindBy(id = "com.fivemobile.thescore:id/label")
@@ -78,6 +79,22 @@ public class HomePage extends BaseAppPage {
     })
     private List<WebElement> categoryName;
 
+    @FindAll({
+            @FindBy(id = "com.fivemobile.thescore:id/icon_team_logo")
+    })
+    private WebElement homepageTeamLogo;
+
+    @FindAll({
+            @FindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
+    })
+    private WebElement backBtn;
+
+    @FindAll({
+            @FindBy(id = "com.fivemobile.thescore:id/header_text")
+    })
+    private List<WebElement> headerTxt;
+
+
      String favTeamOrLeagueTxt = "//*[@resource-id='com.fivemobile.thescore:id/txt_name' and @text='{0}']";
      String teamLogoBtnTxt="//*[@resource-id='com.fivemobile.thescore:id/label' and @text='{0}']";
 
@@ -100,12 +117,23 @@ public class HomePage extends BaseAppPage {
     //Validate team stats tab
     public boolean validateTeamStats(){
         boolean status=true;
+        ArrayList<String> expectedHeaderList=new ArrayList<>();
+        expectedHeaderList.add("OFFENSIVE STATS");
+        expectedHeaderList.add("DEFENSIVE STATS");
         try{
             log.info("Validate team stats inside the team page");
             clickIfExists(teamStats);
-            isElementVisible(viewProgress.get(0),10);
+            isElementVisible(headerTxt.get(0),10);
+            if(!headerTxt.get(0).getText().equals(expectedHeaderList.get(0))){
+                log.error("Header text not matching");
+                status=false;
+            }
+            if(!headerTxt.get(1).getText().equals(expectedHeaderList.get(1))){
+                log.error("Header text not matching");
+                status=false;
+            }
             isElementVisible(categoryName.get(0),10);
-            if(viewProgress.size() == 0 && categoryName.size() == 0){
+            if(categoryName.size() == 0){
                log.error("Progress bar and category names not displayed in stats table");
                 status=false;
             }
@@ -116,6 +144,7 @@ public class HomePage extends BaseAppPage {
         }
         return status;
     }
+
 
     //validates navigation to team page
     public boolean navigationToLeagueOrTeam(String team) {
@@ -149,10 +178,16 @@ public class HomePage extends BaseAppPage {
         return status;
     }
 
+    public HomePage navigateBack(){
+        clickIfExists(backBtn);
+        return this;
+    }
+
     //validates user has reached the homepage
     public boolean validateHomePageReached(){
         try{
             log.info("Validate team and league icon on the home page");
+            isElementVisible(homepageTeamLogo,10);
             List<String> listOfLabels=homePageLabels.stream()
                     .map(ele -> ele.getText())
                     .collect(Collectors.toList());

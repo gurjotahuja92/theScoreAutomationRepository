@@ -15,6 +15,7 @@ public class HomeTest extends DriverFactory {
         Assert.assertTrue(homePage.homepageValidation(league,team),"Home page validation failed");
         Assert.assertTrue(homePage.navigationToLeagueOrTeam(team),"Navigation to team failed");
         Assert.assertTrue(homePage.validateTeamStats(),"Team stats validation failed");
+        Assert.assertTrue(homePage.navigateBack().validateHomePageReached(),"Home page did not display after navigating back");
     }
 }
 
